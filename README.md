@@ -37,3 +37,7 @@ Select any card and ask the model to predict the deck archetype.
 At least 5 cards are required to make a prediction.
 
 Don't know anything about Hearthstone but want to try the app? Some example decklists are available in the `DECK_EXAMPLE.md` file.
+
+### Screenshots
+
+![image](https://github.com/user-attachments/assets/f37b81bf-93b2-436f-83a3-015988d75190)
