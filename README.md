@@ -1,14 +1,14 @@
 # How To
 
-### A Quick Word
+## A Quick Word
 
 This project was created for the AI Developer Training at Alyra, to pass the certification.
 
-### What Is This?
+## What Is This?
 
 This is an "Hearthstone Companion" AI Tool that will help you classify deck archetypes, depending on what cards are included in the given decklist.
 
-### Initialize the Project
+## Initialize the Project
 
 Execute the following Jupyter Notebooks:
 - analysis.ipynb
@@ -25,12 +25,12 @@ A logistic regression model has been chosen for the Machine Learning component, 
 
 You are now ready to launch the Streamlit app!
 
-### Run the Streamlit App
+## Run the Streamlit App
 ```
 $ streamlit run streamlit/app.py
 ```
 
-### Deck Archetype Predictions
+## Deck Archetype Predictions
 
 Select any card and ask the model to predict the deck archetype.
 
@@ -38,6 +38,6 @@ At least 5 cards are required to make a prediction.
 
 Don't know anything about Hearthstone but want to try the app? Some example decklists are available in the `DECK_EXAMPLE.md` file.
 
-### Screenshots
+## Screenshots
 
 ![image](https://github.com/user-attachments/assets/f37b81bf-93b2-436f-83a3-015988d75190)
