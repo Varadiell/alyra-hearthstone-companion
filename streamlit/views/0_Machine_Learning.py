@@ -18,12 +18,12 @@ def predict_deck_archetype():
     model = joblib.load('models/logistic_regression_model.pkl')
     df = pd.read_csv('data/priest_popular_archetype_decks.csv')
     df.drop(['deck_archetype'], axis=1, inplace=True)
-    st.session_state.predicted_deck_archetype = model.predict(
-        utils.adapter.adapt_array_to_dataframe(
-            card_array=st.session_state.cards_in_deck,
-            dataframe=df
-        )
-    )[0]
+    df.drop(df.index, inplace=True) # Drop all rows
+    df = utils.adapter.adapt_array_to_dataframe(
+        card_array=[st.session_state.cards_in_deck],
+        dataframe=df
+    )
+    st.session_state.predicted_deck_archetype = model.predict(df)[0]
 
 # Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():
@@ -81,7 +81,7 @@ if len(st.session_state.cards_in_deck) < 5:
     st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
 else:
     if st.session_state.predicted_deck_archetype:
-        st.write(f"Predicted deck archetype: {st.session_state.predicted_deck_archetype}")
+        st.write(f"Predicted deck archetype: :red[{st.session_state.predicted_deck_archetype}]")
     st.button(
         "Predict deck archetype",
         icon="🔮",
