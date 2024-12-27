@@ -8,6 +8,9 @@ if 'cards_in_deck' not in st.session_state:
 if 'card_to_add' not in st.session_state:
     st.session_state.card_to_add = None
 
+def predict_deck_archetype():
+    return
+
 # Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():
     if st.session_state.card_to_add and st.session_state.card_to_add not in st.session_state.cards_in_deck:
@@ -49,3 +52,11 @@ if st.session_state.cards_in_deck:
     col2.write(st.session_state.cards_in_deck)
 else:
     col2.write("No cards in the deck yet.")
+
+st.subheader("Prediction")
+st.button(
+    "Predict deck archetype",
+    icon="🔮",
+    on_click=predict_deck_archetype,
+    disabled=len(st.session_state.cards_in_deck) < 5
+)
