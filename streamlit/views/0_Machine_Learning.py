@@ -23,7 +23,7 @@ def reset_deck():
     st.session_state.cards_in_deck = []
 
 # Page Config
-st.title("Machine Learning Deck Builder")
+st.title("Machine Learning")
 
 # Columns
 col1, col2 = st.columns(2)
@@ -32,7 +32,7 @@ col1, col2 = st.columns(2)
 card_names_df = pd.read_csv('data/card_names.csv').sort_values(by=['card_name'], ignore_index=True)
 
 # Col1 - Card Selection
-col1.subheader("Cards")
+col1.subheader("Cards", divider="red")
 
 # Reset key by specifying key='card_to_add' and relying on session_state reset
 card_to_add = col1.selectbox(
@@ -51,7 +51,7 @@ col1.button(
 )
 
 # Col2 - Display Current Deck
-col2.subheader("Deck")
+col2.subheader("Deck", divider="red")
 if st.session_state.cards_in_deck:
     col2.write(st.session_state.cards_in_deck)
     col2.button(
@@ -62,10 +62,12 @@ if st.session_state.cards_in_deck:
 else:
     col2.write("No cards in the deck yet.")
 
-st.subheader("Prediction")
-st.button(
-    "Predict deck archetype",
-    icon="🔮",
-    on_click=predict_deck_archetype,
-    disabled=len(st.session_state.cards_in_deck) < 5
-)
+st.subheader("Prediction", divider="red")
+if len(st.session_state.cards_in_deck) >= 5:
+    st.button(
+        "Predict deck archetype",
+        icon="🔮",
+        on_click=predict_deck_archetype
+    )
+else:
+    st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
