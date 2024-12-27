@@ -8,11 +8,12 @@ if 'cards_in_deck' not in st.session_state:
 if 'card_to_add' not in st.session_state:
     st.session_state.card_to_add = None
 
-# Function to add the selected card to the deck
+# Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():
     if st.session_state.card_to_add and st.session_state.card_to_add not in st.session_state.cards_in_deck:
         st.session_state.cards_in_deck.append(st.session_state.card_to_add)
-        st.session_state.card_to_add = None  # Reset selection after adding the card
+    # Reset the selectbox by clearing the session state value
+    st.session_state.card_to_add = None
 
 # Page Config
 st.title("Machine Learning Deck Builder")
@@ -25,11 +26,14 @@ card_names_df = pd.read_csv('data/card_names.csv').sort_values(by=['card_name'],
 
 # Col1 - Card Selection
 col1.subheader("Cards")
-st.session_state.card_to_add = col1.selectbox(
+
+# Reset key by specifying key='card_to_add' and relying on session_state reset
+card_to_add = col1.selectbox(
     "Select a card",
     card_names_df['card_name'],
     index=None,
-    placeholder="Select a card to add to your deck..."
+    placeholder="Select a card to add to your deck...",
+    key='card_to_add' # Link selectbox to session state key
 )
 
 col1.button(
