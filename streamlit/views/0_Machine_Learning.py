@@ -18,6 +18,10 @@ def add_card_to_deck():
     # Reset the selectbox by clearing the session state value
     st.session_state.card_to_add = None
 
+# Function to reset the deck
+def reset_deck():
+    st.session_state.cards_in_deck = []
+
 # Page Config
 st.title("Machine Learning Deck Builder")
 
@@ -50,6 +54,11 @@ col1.button(
 col2.subheader("Deck")
 if st.session_state.cards_in_deck:
     col2.write(st.session_state.cards_in_deck)
+    col2.button(
+        "Reset Deck",
+        icon="🗑️",
+        on_click=reset_deck
+    )
 else:
     col2.write("No cards in the deck yet.")
 
