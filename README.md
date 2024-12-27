@@ -1,23 +1,35 @@
 # How To
 
-### Initialize the project
+### A Quick Word
+
+This project was created for the AI Developer Training at Alyra, to pass the certification.
+
+### Initialize the Project
 
 Execute the following Jupyter Notebooks:
 - analysis.ipynb
 - extract_card_names.ipynb
 
-The analysis will export the csv file with all priest decks (only the most popular priest class decks in order to reduce the scope).
+The analysis exports a CSV file containing all Priest decks (only the most popular Priest class decks, to reduce the scope).
 
-The extraction of card names is used in the streamlit app in order to display all available card names in the selectbox input.
+The extraction of card names is used in the Streamlit app to display all available card names in the selectbox input.
 
-Then, train your model:
+Next, train your model:
 - train_logistic_regression.ipynb
 
-The logistic regression model has been chosen for the Machine Learning part, but you can use any other model in the notebooks if you tweak the streamlit app, by changing the path of the model used.
+A logistic regression model has been chosen for the Machine Learning component, but you can use any other model in the notebooks by tweaking the Streamlit app and changing the path to the model used.
 
-You are now ready to launch the streamlit app!
+You are now ready to launch the Streamlit app!
 
-### Run the Streamlit app
+### Run the Streamlit App
 ```
 $ streamlit run streamlit/app.py
 ```
+
+### Deck Archetype Predictions
+
+Select any card and ask the model to predict the deck archetype.
+
+At least 5 cards are required to make a prediction.
+
+Don't know anything about Hearthstone but want to try the app? Some example decklists are available in the `DECK_EXAMPLE.md` file.
