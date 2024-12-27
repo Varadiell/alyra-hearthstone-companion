@@ -4,6 +4,10 @@
 
 This project was created for the AI Developer Training at Alyra, to pass the certification.
 
+### What Is This?
+
+This is an "Hearthstone Companion" AI Tool that will help you classify deck archetypes, depending on what cards are included in the given decklist.
+
 ### Initialize the Project
 
 Execute the following Jupyter Notebooks:
