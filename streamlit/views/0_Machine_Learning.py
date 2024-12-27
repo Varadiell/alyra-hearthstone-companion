@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import joblib
+import utils.adapter
 
 # Initialize session state for cards in deck if not already present
 if 'cards_in_deck' not in st.session_state:
@@ -8,8 +10,20 @@ if 'cards_in_deck' not in st.session_state:
 if 'card_to_add' not in st.session_state:
     st.session_state.card_to_add = None
 
+if 'predicted_deck_archetype' not in st.session_state:
+    st.session_state.predicted_deck_archetype = None
+
 def predict_deck_archetype():
-    return
+    st.session_state.predicted_deck_archetype = None
+    model = joblib.load('models/logistic_regression_model.pkl')
+    df = pd.read_csv('data/priest_popular_archetype_decks.csv')
+    df.drop(['deck_archetype'], axis=1, inplace=True)
+    st.session_state.predicted_deck_archetype = model.predict(
+        utils.adapter.adapt_array_to_dataframe(
+            card_array=st.session_state.cards_in_deck,
+            dataframe=df
+        )
+    )[0]
 
 # Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():
@@ -52,22 +66,24 @@ col1.button(
 
 # Col2 - Display Current Deck
 col2.subheader("Deck", divider="red")
-if st.session_state.cards_in_deck:
-    col2.write(st.session_state.cards_in_deck)
+col2.write(st.session_state.cards_in_deck)
+if len(st.session_state.cards_in_deck) == 0:
+    col2.write("No cards in the deck yet.")
+else:
     col2.button(
         "Reset Deck",
         icon="🗑️",
         on_click=reset_deck
     )
-else:
-    col2.write("No cards in the deck yet.")
 
 st.subheader("Prediction", divider="red")
-if len(st.session_state.cards_in_deck) >= 5:
+if len(st.session_state.cards_in_deck) < 5:
+    st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
+else:
+    if st.session_state.predicted_deck_archetype:
+        st.write(f"Predicted deck archetype: {st.session_state.predicted_deck_archetype}")
     st.button(
         "Predict deck archetype",
         icon="🔮",
         on_click=predict_deck_archetype
     )
-else:
-    st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
