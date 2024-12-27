@@ -20,7 +20,7 @@ def predict_deck_archetype():
     df.drop(['deck_archetype'], axis=1, inplace=True)
     df.drop(df.index, inplace=True) # Drop all rows
     df = utils.adapter.adapt_array_to_dataframe(
-        card_array=[st.session_state.cards_in_deck],
+        card_array=st.session_state.cards_in_deck,
         dataframe=df
     )
     st.session_state.predicted_deck_archetype = model.predict(df)[0]
