@@ -12,6 +12,8 @@ This is an "Hearthstone Companion" AI Tool that will help you classify deck arch
 
 Poetry will install everything needed:
 ```
+$ poetry config virtualenvs.create true
+$ poetry shell
 $ poetry install
 ```
 
