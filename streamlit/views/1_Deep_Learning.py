@@ -6,16 +6,7 @@ from tensorflow import keras
 
 # Initialize session state for cards in deck if not already present
 if 'cards_in_deck' not in st.session_state:
-    st.session_state.cards_in_deck = [
-        "Duskbreaker",
-        "Nightscale Matriarch",
-        "Firetree Witchdoctor",
-        "Tar Creeper",
-        "Twilight Drake",
-        "Cobalt Scalebane",
-        "Bone Drake",
-        "Wyrmguard"
-    ]
+    st.session_state.cards_in_deck = []
 
 if 'card_to_add' not in st.session_state:
     st.session_state.card_to_add = None
