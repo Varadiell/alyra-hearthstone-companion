@@ -27,6 +27,7 @@ def predict_deck_archetype():
 
 # Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():
+    st.session_state.predicted_deck_archetype = None
     if st.session_state.card_to_add and st.session_state.card_to_add not in st.session_state.cards_in_deck:
         st.session_state.cards_in_deck.append(st.session_state.card_to_add)
     # Reset the selectbox by clearing the session state value
@@ -35,6 +36,7 @@ def add_card_to_deck():
 # Function to reset the deck
 def reset_deck():
     st.session_state.cards_in_deck = []
+    st.session_state.predicted_deck_archetype = None
 
 # Page Config
 st.title("Machine Learning")
