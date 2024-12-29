@@ -56,7 +56,7 @@ col1, col2 = st.columns(2)
 card_names_df = pd.read_csv('data/card_names.csv').sort_values(by=['card_name'], ignore_index=True)
 
 # Col1 - Card Selection
-col1.subheader("Cards", divider="red")
+col1.subheader("Cards", divider="blue")
 
 # Reset key by specifying key='card_to_add' and relying on session_state reset
 card_to_add = col1.selectbox(
@@ -75,7 +75,7 @@ col1.button(
 )
 
 # Col2 - Display Current Deck
-col2.subheader("Deck", divider="red")
+col2.subheader("Deck", divider="blue")
 col2.write(st.session_state.cards_in_deck)
 if len(st.session_state.cards_in_deck) == 0:
     col2.write("No cards in the deck yet.")
@@ -86,7 +86,7 @@ else:
         on_click=reset_deck
     )
 
-st.subheader("Prediction", divider="red")
+st.subheader("Prediction", divider="blue")
 if len(st.session_state.cards_in_deck) < 5:
     st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
 else:
