@@ -8,6 +8,13 @@ This project was created for the AI Developer Training at Alyra, to pass the cer
 
 This is an "Hearthstone Companion" AI Tool that will help you classify deck archetypes, depending on what cards are included in the given decklist.
 
+## Project Installation
+
+Poetry will install everything needed:
+```
+$ poetry install
+```
+
 ## Initialize the Project
 
 Execute the following Jupyter Notebooks:
