@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
-import utils.adapter
-import joblib
-from tensorflow import keras
+import requests
 
 # Initialize session state for cards in deck if not already present
 if 'cards_in_deck' not in st.session_state:
@@ -16,22 +14,8 @@ if 'predicted_deck_archetype' not in st.session_state:
 
 def predict_deck_archetype():
     st.session_state.predicted_deck_archetype = None
-    model = keras.models.load_model('models/fnn_dense_layers_model.keras')
-    encoder = joblib.load('models/fnn_dense_layers_encoder.pkl')
-    df = pd.read_csv('data/priest_popular_archetype_decks.csv')
-    df.drop(['deck_archetype'], axis=1, inplace=True)
-    df.drop(df.index, inplace=True)  # Drop all rows to keep only the structure
-    df = utils.adapter.adapt_array_to_dataframe(
-        card_array=st.session_state.cards_in_deck,
-        dataframe=df
-    )
-    if df.shape[1] != model.input_shape[1]:
-        st.error("The input shape does not match the model's expected input.")
-        return
-    prediction = model.predict(df)
-    predicted_class_index = prediction.argmax(axis=1)[0]
-    archetype = encoder.inverse_transform([predicted_class_index])[0]
-    st.session_state.predicted_deck_archetype = archetype
+    archetype = requests.get("http://127.0.0.1:8000/deep/predict", json={"cards": st.session_state.cards_in_deck})
+    st.session_state.predicted_deck_archetype = archetype.json()['archetype']
 
 # Function to add the selected card to the deck and reset the selectbox
 def add_card_to_deck():

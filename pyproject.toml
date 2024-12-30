@@ -16,6 +16,7 @@ tensorflow = "^2.18.0"
 joblib = "^1.4.2"
 streamlit = "^1.41.1"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
+pydantic = "^2.10.4"
 
 [build-system]
 requires = ["poetry-core"]
