@@ -35,4 +35,6 @@ st.set_page_config(
 
 st.sidebar.text("Made with ❤️")
 
+st.logo("assets/hearthstone_logo.png")
+
 pg.run()
