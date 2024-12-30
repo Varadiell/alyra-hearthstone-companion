@@ -23,7 +23,7 @@ pg = st.navigation({
     "Home": [
         home_page,
     ],
-    "Learning": [
+    "Predictions": [
         machine_learning_page,
         deep_learning_page,
     ],

@@ -31,7 +31,7 @@ def reset_deck():
     st.session_state.predicted_deck_archetype = None
 
 # Page Config
-st.title("Deep Learning")
+st.title(":blue[Deep Learning]")
 
 # Columns
 col1, col2 = st.columns(2)
@@ -72,7 +72,7 @@ else:
 
 st.subheader("Prediction", divider="blue")
 if len(st.session_state.cards_in_deck) < 5:
-    st.write("Not enough cards in deck to predict deck archetype (min. 5 cards).")
+    st.write("Not enough cards in deck to predict deck archetype (min. 5 cards, up to 30).")
 else:
     if st.session_state.predicted_deck_archetype:
         st.write(f"Predicted deck archetype: :red[{st.session_state.predicted_deck_archetype}]")
