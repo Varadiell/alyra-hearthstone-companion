@@ -39,6 +39,7 @@ You are now ready to launch FastAPI and the Streamlit app!
 ```
 $ fastapi dev fastapi/app.py
 ```
+(...or use the Dockerfile to create an image.)
 
 ## Run the Streamlit App
 ```

@@ -14,7 +14,7 @@ if 'predicted_deck_archetype' not in st.session_state:
 
 def predict_deck_archetype():
     st.session_state.predicted_deck_archetype = None
-    archetype = requests.get("http://127.0.0.1:8000/deep/predict", json={"cards": st.session_state.cards_in_deck})
+    archetype = requests.get("http://localhost:8000/deep/predict", json={"cards": st.session_state.cards_in_deck})
     st.session_state.predicted_deck_archetype = archetype.json()['archetype']
 
 # Function to add the selected card to the deck and reset the selectbox
