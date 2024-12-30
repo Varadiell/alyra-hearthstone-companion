@@ -32,7 +32,13 @@ Next, train your model:
 
 A logistic regression model has been chosen for the Machine Learning component, but you can use any other model in the notebooks by tweaking the Streamlit app and changing the path to the model used.
 
-You are now ready to launch the Streamlit app!
+You are now ready to launch FastAPI and the Streamlit app!
+
+## Run the FastAPI backend
+
+```
+$ fastapi dev fastapi/app.py
+```
 
 ## Run the Streamlit App
 ```
